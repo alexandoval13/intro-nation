@@ -1,10 +1,8 @@
 // practice worksheet
 
 
-function addOneHundred (input) {
-  var x = 100;
-
-  return x + input;
+function addTwoValues (input1, input2) {
+  return input1 + input2;
 }
 
-addOneHundred(768);
+addTwoValues(123, 768);
