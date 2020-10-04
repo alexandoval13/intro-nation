@@ -22,3 +22,7 @@ function divide(input1, input2) {
 function returnGreeting (name) {
   return 'Hi, ' + name + '.';
 }
+
+function returnFarewell (name) {
+  return 'Bye, ' + name + '.';
+}
