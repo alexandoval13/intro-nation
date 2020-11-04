@@ -42,12 +42,12 @@ var hasCycle = function(linkedList) {
     while (iterator && wildCard && wildCard.next) {
       iterator = iterator.next;
       wildCard = wildCard.next.next;
-      // if linkedLists are the same: linkedList contains a cycle
+
       if (iterator === wildCard) {
         return true;
       }
     }
-  // else if null is found in a next property of a node: return false
+
   return false;
 };
 
