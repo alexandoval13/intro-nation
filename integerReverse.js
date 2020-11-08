@@ -13,7 +13,6 @@
 
 function reverseInteger(number){
   var reversed = arguments[1] || 0;
-
   var lastNum = number % 10;
 
   reversed = reversed * 10 + lastNum;
@@ -23,5 +22,4 @@ function reverseInteger(number){
   }
 
   return reverseInteger(((number - lastNum) / 10), reversed);
-
 }
