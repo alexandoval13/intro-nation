@@ -32,5 +32,3 @@ var isPalindrome = function (string) {
   let reversedString = string.split('').reverse().join('');
   return string === reversedString;
 }
-
-// console.log(longestPalindrome("My dad is a racecar athlete"));
