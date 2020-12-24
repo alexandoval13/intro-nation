@@ -53,5 +53,7 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 
 var romanToInt = function(s) {
 
+  // string char and string char pair rules
+
 };
 
