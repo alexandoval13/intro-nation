@@ -6,7 +6,7 @@ Assume the environment does not allow you to store 64-bit integers (signed or un
 */
 
 var reverse = function(x) {
-  // set true or false positive check ( >= 0 ? )
+
   if (x >= 0) {
     var pos = true;
     var revString = ''
