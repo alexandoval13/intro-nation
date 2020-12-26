@@ -15,12 +15,10 @@ var reverse = function(x) {
     var revString = '-'
   }
 
-  // convert to a string
   var stringNum = x.toString();
   var limit = 0;
   if (!pos) { limit = 1 };
 
-  // work from the last char to the first, concatting to a string
   for (var i = stringNum.length - 1; i >= limit; i--) {
     revString += stringNum[i];
     console.log(revString);
