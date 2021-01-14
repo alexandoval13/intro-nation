@@ -35,4 +35,4 @@ var assertEquals = function(expected, returned, name) {
   }
 }
 // helper func
-assertEquals(321, listToNumber(1, 2, 3), 'Function listToNumber should return a reversed number from an arrray of numbers'
+assertEquals(321, listToNumber(1, 2, 3), 'Function listToNumber should return a reversed number from an arrray of numbers');
