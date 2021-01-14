@@ -6,5 +6,10 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 */
 
 var addTwoNumbers = function(l1, l2) {
+  // convert the first list to a number
+  // convert the secong list to a number
 
+  // add the numbers
+
+  // convert the result to a list in reverse
 };
