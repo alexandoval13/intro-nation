@@ -17,14 +17,24 @@ var listToNumber = function(list) {
   return Number(numberStr);
 }
 
+var numberToList = function(num) {
+  var numStr = String(num);
+  var numList = [];
+  for (var i = numStr.length - 1; i >= 0; i++) {
+    numList.push(Number(numStr[i]));
+  }
+  return numList;
+}
+
 var addTwoNumbers = function(l1, l2) {
   // convert the first list to a number
-
+    var numl1 = listToNumber(l1);
   // convert the secong list to a number
-
+    var numl2 = listToNumber(l2);
   // add the numbers
-
+    var addedNum = numl1 + numl2;
   // convert the result to a list in reverse
+    return numberToList(addedNum);
 };
 
 // TEST SUITE
@@ -35,5 +45,14 @@ var assertEquals = function(expected, returned, name) {
     console.log('Test \"', name + '" did not return expected results. Received [' + returned + '], expected [' + expected + '].');
   }
 }
+
+var assertArrayEquals = function(expected, returned, name) {
+  if (JSON.stringify(expected) === JSON.stringify(returned)) {
+    console.log('Test \"', name + '" returned expected results.');
+  } else {
+    console.log('Test \"', name + '" did not return expected results. Received [' + returned + '], expected [' + expected + '].');
+  }
+}
 // helper func
-assertEquals(321, listToNumber([1, 2, 3]), 'Function listToNumber should return a reversed number from an arrray of numbers');
+assertEquals(321, listToNumber([1, 2, 3]), 'Function listToNumber should return a number from an arrray of numbers in reverse order');
+assertArrayEquals([1, 2, 3], numberToList(321), 'Function numberToList returns an array of numbers in reverse order');
