@@ -5,6 +5,9 @@ You are given two non-empty linked lists representing two non-negative integers.
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 */
 
+
+// NOTE: LEETCODE DID NOT LIKE SOLUTION -- COME BACK AT LATER POINT
+
 var listToNumber = function(list) {
   //   debugger;
     // declare number
