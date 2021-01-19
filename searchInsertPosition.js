@@ -6,5 +6,5 @@ var searchInsert = function(nums, target) {
     if (nums[i] === target) { return i };
     position = i;
   }
-  return position;
+  return position +1;
 };
