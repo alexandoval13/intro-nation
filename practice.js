@@ -26,3 +26,10 @@ function returnGreeting (name) {
 function returnFarewell (name) {
   return 'Bye, ' + name + '.';
 }
+
+
+// WRITE A TEST SUITE
+var test = addTwoValues(2, 4);
+var expected = 6;
+var assertion = test === expected;
+console.log(assertion);
