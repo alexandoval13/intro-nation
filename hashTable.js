@@ -59,3 +59,75 @@ const hash2 = (key, max) => {
   return total;
 }
 
+
+/**
+ * Dealing with collisions
+ * 1. Separate Chaining
+ * Store them at the same spot using another data structure (like an array or linked list
+ *
+ * Allows us to store mulitple k-v pairs at the same index
+ *
+ * 2. Linear Probing
+ * when there's a collision, search through the array to find the next empty slot
+ *
+ *  */
+
+
+// Build hash table class
+class HashTable {
+  constructor (size=53) { //default value
+    this.keyMap = newArray(size);
+  }
+
+  _hash(key) {
+    let total = 0;
+    let prime = 31;
+    for (let i = 0; i < Math.min(key.length, 100); i++) {
+      let value = char.charChodeAt(0) - 96;
+    total = (total + prime + value) % this.keyMap.length;
+  }
+  return total;
+  }
+}
+
+/**
+ * Set / Get
+ *
+ * Set:
+ *  Accepts a key and a value
+ *  Hashes the key
+ *  Stores the pair in the hash table with separate chaining
+ *
+ *
+ * Get:
+ *  Accepts a key
+ *  Hashes the key
+ *  Retrieves the value in the hash table
+ *  OR return undefined if not found
+ *
+ *  */
+
+
+class HashTable {
+  constructor (size=53) { //default value
+    this.keyMap = newArray(size);
+  }
+
+  _hash(key) {
+    let total = 0;
+    let prime = 31;
+    for (let i = 0; i < Math.min(key.length, 100); i++) {
+      let value = char.charChodeAt(0) - 96;
+    total = (total + prime + value) % this.keyMap.length;
+    }
+    return total;
+  }
+
+  set(key, val) {
+    let index = this._hash(key);
+    if (!this.keyMap[index]) {
+      this.keyMap[index] = [];
+    }
+    this.keyMap[index].push([key, val]);
+  }
+}
