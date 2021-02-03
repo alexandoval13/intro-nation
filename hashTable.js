@@ -109,7 +109,7 @@ class HashTable {
 
 
 class HashTable {
-  constructor (size=53) { //default value
+  constructor (size=53) { // default value if none specified on construction
     this.keyMap = newArray(size);
   }
 
@@ -130,4 +130,17 @@ class HashTable {
     }
     this.keyMap[index].push([key, val]);
   }
+
+  get(key) {
+    let index = this._hash(key);
+    if (this.keyMap[index]) {
+      for (let i = 0; i < this.keyMap[index].length; i++) {
+        if (this.keyMap[index][i][0] === key) {
+          return this.keyMap[index][i];
+        }
+      }
+    return undefined;
+    }
+  }
 }
+
