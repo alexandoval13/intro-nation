@@ -35,42 +35,42 @@
 
 // hash1, an ok but not really that great hashing function
 //  this one is linear time
- const hash1 = (key, max) => {
-   let total = 0;
-   for (let char of key) {
-     let value = char.charChodeAt(0) - 96;
-     total = (total + value) % max
-   }
-   return total;
- }
+const hash1 = (key, max) => {
+  let total = 0;
+  for (let char of key) {
+    let value = char.charChodeAt(0) - 96;
+    total = (total + value) % max
+  }
+  return total;
+}
 
 // hash2, a slightly improved function
 // manth.min to use a minimum amount of string or string length
 // using prime numbers in table length helps reduce collisions
 //  this one is constant time
 const hash2 = (key, max) => {
-  let total = 0;
-  let prime = 31;
-  for (let i = 0; i < Math.min(key.length, 100); i++) {
-    let char = key[i]
-    let value = char.charChodeAt(0) - 96;
-    total = (total + prime + value) % max
-  }
-  return total;
+ let total = 0;
+ let prime = 31;
+ for (let i = 0; i < Math.min(key.length, 100); i++) {
+   let char = key[i]
+   let value = char.charChodeAt(0) - 96;
+   total = (total + prime + value) % max
+ }
+ return total;
 }
 
 
 /**
- * Dealing with collisions
- * 1. Separate Chaining
- * Store them at the same spot using another data structure (like an array or linked list
- *
- * Allows us to store mulitple k-v pairs at the same index
- *
- * 2. Linear Probing
- * when there's a collision, search through the array to find the next empty slot
- *
- *  */
+* Dealing with collisions
+* 1. Separate Chaining
+* Store them at the same spot using another data structure (like an array or linked list
+*
+* Allows us to store mulitple k-v pairs at the same index
+*
+* 2. Linear Probing
+* when there's a collision, search through the array to find the next empty slot
+*
+*  */
 
 
 // Build hash table class
@@ -91,88 +91,88 @@ const hash2 = (key, max) => {
 // }
 
 /**
- * Set / Get
- *
- * Set:
- *  Accepts a key and a value
- *  Hashes the key
- *  Stores the pair in the hash table with separate chaining
- *
- *
- * Get:
- *  Accepts a key
- *  Hashes the key
- *  Retrieves the value in the hash table
- *  OR return undefined if not found
- *
- *  */
+* Set / Get
+*
+* Set:
+*  Accepts a key and a value
+*  Hashes the key
+*  Stores the pair in the hash table with separate chaining
+*
+*
+* Get:
+*  Accepts a key
+*  Hashes the key
+*  Retrieves the value in the hash table
+*  OR return undefined if not found
+*
+*  */
 
 
 class HashTable {
-  constructor (size=53) { // default value if none specified on construction
-    this.keyMap = new Array(size);
-  }
+ constructor (size=53) { // default value if none specified on construction
+   this.keyMap = new Array(size);
+ }
 
-  _hash(key) {
-    let total = 0;
-    let prime = 31;
-    for (let i = 0; i < Math.min(key.length, 100); i++) {
-      let char = key[i];
-      let value = char.charCodeAt(0) - 96;
-      total = (total + prime + value) % this.keyMap.length;
-    }
-    return total;
-  }
+ _hash(key) {
+   let total = 0;
+   let prime = 31;
+   for (let i = 0; i < Math.min(key.length, 100); i++) {
+     let char = key[i];
+     let value = char.charCodeAt(0) - 96;
+     total = (total + prime + value) % this.keyMap.length;
+   }
+   return total;
+ }
 
-  set(key, val) {
-    let index = this._hash(key);
-    if (!this.keyMap[index]) {
-      this.keyMap[index] = [];
-    }
-    this.keyMap[index].push([key, val]);
-  }
+ set(key, val) {
+   let index = this._hash(key);
+   if (!this.keyMap[index]) {
+     this.keyMap[index] = [];
+   }
+   this.keyMap[index].push([key, val]);
+ }
 
-  get(key) {
-    let index = this._hash(key);
-    if (this.keyMap[index]) {
-      for (let i = 0; i < this.keyMap[index].length; i++) {
-        if (this.keyMap[index][i][0] === key) {
-          return this.keyMap[index][i];
-        }
-      }
-    return undefined;
-    }
-  }
+ get(key) {
+   let index = this._hash(key);
+   if (this.keyMap[index]) {
+     for (let i = 0; i < this.keyMap[index].length; i++) {
+       if (this.keyMap[index][i][0] === key) {
+         return this.keyMap[index][i];
+       }
+     }
+   return undefined;
+   }
+ }
 
-  values() {
-    let valuesArr = [];
+ values() {
+   let valuesArr = [];
 
-    for (let i = 0; i < this.keyMap.length; i++) {
-      if(this.keyMap[i]) {
-        for (let j = 0; j < this.keyMap[i].length; j++) {
-          if (!valuesArr.includes(this.keyMap[i][j][1])) {
-            valuesArr.push(this.keyMap[i][j][1]);
-          }
-        }
-      }
-    }
-    return valuesArr;
-  }
+   for (let i = 0; i < this.keyMap.length; i++) {
+     if(this.keyMap[i]) {
+       for (let j = 0; j < this.keyMap[i].length; j++) {
+         if (!valuesArr.includes(this.keyMap[i][j][1])) {
+           valuesArr.push(this.keyMap[i][j][1]);
+         }
+       }
+     }
+   }
+   return valuesArr;
+ }
 
-  keys() {
-    let keysArr = [];
+ keys() {
+   let keysArr = [];
 
-    for (let i = 0; i < this.keyMap.length; i++) {
-      if(this.keyMap[i]) {
-        for (let j = 0; j < this.keyMap[i].length; j++) {
-          if (!keysArr.includes(this.keyMap[i][j][0])) {
-            keysArr.push(this.keyMap[i][j][0]);
-          }
-        }
-      }
-    }
-    return valuesArr;
-  }
+   for (let i = 0; i < this.keyMap.length; i++) {
+     if(this.keyMap[i]) {
+       for (let j = 0; j < this.keyMap[i].length; j++) {
+         if (!keysArr.includes(this.keyMap[i][j][0])) {
+           keysArr.push(this.keyMap[i][j][0]);
+         }
+       }
+     }
+   }
+   return keysArr;
+ }
 
 }
 
@@ -191,5 +191,5 @@ ht.set("purple","#DDA0DD")
 ht.set("violet","#DDA0DD")
 
 ht.keys().forEach(function(key){
-  console.log(ht.get(key));
+ console.log(ht.get(key));
 })
