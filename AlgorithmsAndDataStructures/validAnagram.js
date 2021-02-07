@@ -21,12 +21,6 @@ const validAnagram = (string1, string2) => {
     letterObj[letter]--;
   }
 
-  for (var letter in letterObj) {
-    if (letterObj[letter] !== 0) {
-      return false;
-    }
-  }
-
   return true;
 };
 
