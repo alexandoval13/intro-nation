@@ -8,7 +8,7 @@ const binarySearch = (arr, val) => {
   // while there is no match
   while (min <= max) {
     // find the middle value of the sorted array
-    let i = Math.floor(min + max / 2);
+    let i = Math.floor((min + max) / 2);
     // if arr at index equals the value
     if (arr[i] === val) {
       // return index
