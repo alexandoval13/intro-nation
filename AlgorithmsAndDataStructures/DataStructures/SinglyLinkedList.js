@@ -54,7 +54,7 @@ class SinglyLinkedList {
       this.tail.next = node;
       this.tail = node;
     }
-    this.head++;
+    this.length++;
   }
 }
 
