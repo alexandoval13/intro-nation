@@ -1,4 +1,4 @@
-// Implement solution using  multiple pointers
+// Implement solution using a multiple pointers pattern
 
 const countUniqueValues = (arr) => {
   if (arr.length === 0) {
