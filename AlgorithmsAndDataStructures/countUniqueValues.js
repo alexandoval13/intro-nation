@@ -1,3 +1,5 @@
+// Implement solution using  multiple pointers
+
 const countUniqueValues = (arr) => {
   if (arr.length === 0) {
     return 0;
@@ -7,13 +9,11 @@ const countUniqueValues = (arr) => {
   let b = 1;
 
   while (b < arr.length) {
-    if (arr[a] === arr[b]) {
-      b++;
-    } else {
+    if (arr[a] !== arr[b]) {
       a++;
       arr[a] = arr[b];
-      b++;
     }
+    b++;
   }
 
   return a + 1;
