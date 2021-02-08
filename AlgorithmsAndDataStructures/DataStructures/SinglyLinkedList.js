@@ -135,18 +135,22 @@ class SinglyLinkedList {
   }
 
   insert(position, val) {
-    let newNode = new Node(val);
+    if (position < 0 || position > this.length) {
+      return false;
+    } else if (position === 0) {
+      return !!this.unshift(val);
+    } else if (position === this.length) {
+      return !!this.push(val);
+    } else {
+      let previous = this.get(position - 1);
+      let next = previous.next;
 
-    let previous = this.get(position - 1);
-    let next = previous.next;
-
-    console.log('P:', previous, '\nV:', next);
-
-    previous.next = newNode;
-    newNode.next = next;
-    console.log('insertednode:', newNode);
-
-    this.length++;
+      let newNode = new Node(val);
+      previous.next = newNode;
+      newNode.next = next;
+      this.length++;
+      return true;
+    }
   }
 }
 
@@ -186,6 +190,8 @@ list.get(3);
 list.get(0);
 list.get(1);
 
-list.set(1, 'insertion');
+list.insert(1, 'insertion');
 console.log(list.get(1).next);
 console.log(list);
+
+console.log(list.insert(0, 'test'));
