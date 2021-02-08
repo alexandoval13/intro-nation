@@ -126,6 +126,15 @@ class SinglyLinkedList {
   }
 
   set(position, val) {
+    let foundNode = this.get(position);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
+
+  insert(position, val) {
     let newNode = new Node(val);
 
     let previous = this.get(position - 1);
