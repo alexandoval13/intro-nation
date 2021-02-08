@@ -82,6 +82,63 @@ class SinglyLinkedList {
     this.length--;
     return poppedNode;
   }
+
+  shift() {
+    if (this.length === 0) {
+      return undefined;
+    }
+    const shiftedNode = this.head;
+    this.head = shiftedNode.next;
+    // shiftedNode.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return shiftedNode;
+  }
+
+  unshift(val) {
+    let newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
+  get(position) {
+    if (this.length <= position || position < 0) {
+      return null;
+    }
+    let currentNode = this.head;
+    let currentPosition = 0;
+    while (currentPosition !== position) {
+      currentNode = currentNode.next;
+      currentPosition++;
+    }
+    console.log(position, currentNode);
+    return currentNode;
+  }
+
+  set(position, val) {
+    let newNode = new Node(val);
+
+    let previous = this.get(position - 1);
+    let next = previous.next;
+
+    console.log('P:', previous, '\nV:', next);
+
+    previous.next = newNode;
+    newNode.next = next;
+    console.log('insertednode:', newNode);
+
+    this.length++;
+  }
 }
 
 var list = new SinglyLinkedList();
@@ -93,12 +150,33 @@ list.push(2);
 list.push(3);
 console.log(list);
 
-const pop = list.pop();
-console.log(list);
-console.log(pop);
+// const pop = list.pop();
+// console.log(list);
+// console.log(pop);
 
-list.push(4);
-list.push(8);
-list.push(7);
-list.push(6);
+// list.push(4);
+// list.push(8);
+// list.push(7);
+// list.push(6);
+// console.log(list);
+
+// const shifted = list.shift();
+// console.log(shifted);
+// console.log(list);
+// list.shift();
+// list.shift();
+// list.shift();
+// list.shift();
+// list.shift();
+// console.log(list);
+
+// list.unshift('woooo');
+// console.log(list);
+
+list.get(3);
+list.get(0);
+list.get(1);
+
+list.set(1, 'insertion');
+console.log(list.get(1).next);
 console.log(list);
