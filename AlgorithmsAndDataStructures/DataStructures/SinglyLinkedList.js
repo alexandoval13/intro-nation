@@ -17,8 +17,19 @@
  * QUESTIONS FOR EACH DATA STRUCTURE:
  *
  *  What is the big(O) for its methods?
+ *  Insertion: O(1)
+ *  Removal: It depends...
+ *    O(1) - from the beginning
+ * OR
+ *    O(n) - from the end
+ *  Searching: O(n)
+ *  Access: O(n)
  *
  *  What are the advantages/disadvantages?
+ *
+ *
+ *  Notes:
+ *    Foundation for Stacks and Queues
  *
  */
 
@@ -28,14 +39,6 @@ class Node {
     this.next = null;
   }
 }
-
-// const first = new Node('Hi');
-// first.next = new Node('there');
-// first.next.next = new Node('how');
-// first.next.next.next = new Node('goes');
-// first.next.next.next.next = new Node('it');
-
-// console.log(first);
 
 class SinglyLinkedList {
   constructor() {
@@ -121,7 +124,6 @@ class SinglyLinkedList {
       currentNode = currentNode.next;
       currentPosition++;
     }
-    console.log(position, currentNode);
     return currentNode;
   }
 
@@ -152,6 +154,41 @@ class SinglyLinkedList {
       return true;
     }
   }
+
+  remove(position) {
+    if (position < 0 || position >= this.length) {
+      return undefined;
+    } else if (position === 0) {
+      return this.shift();
+    } else if (position === this.length - 1) {
+      return this.pop();
+    } else {
+      let previous = this.get(position - 1);
+      let removedNode = previous.next;
+
+      previous.next = removedNode.next;
+      this.length--;
+      return removedNode;
+    }
+  }
+
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let next = null;
+    let prev = null;
+
+    for (var i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+
+      prev = node;
+      node = next;
+    }
+    return this;
+  }
 }
 
 var list = new SinglyLinkedList();
@@ -161,7 +198,7 @@ list.push(1);
 list.push(2);
 // console.log(list);
 list.push(3);
-console.log(list);
+// console.log(list);
 
 // const pop = list.pop();
 // console.log(list);
@@ -186,12 +223,23 @@ console.log(list);
 // list.unshift('woooo');
 // console.log(list);
 
-list.get(3);
-list.get(0);
-list.get(1);
+// list.get(3);
+// list.get(0);
+// list.get(1);
 
-list.insert(1, 'insertion');
-console.log(list.get(1).next);
-console.log(list);
+// list.insert(1, 'insertion');
+// console.log(list.get(1).next);
+// console.log('LIST:\n', list);
 
-console.log(list.insert(0, 'test'));
+// console.log(list.insert(0, 'test'));
+
+// console.log('REMOVE 10:\n', list.remove(10));
+// console.log('REMOVE 1:\n', list.remove(1));
+// console.log('REMOVE 2:\n', list.remove(2));
+// console.log('LIST:\n', list);
+// console.log('REMOVE 2:\n', list.remove(2));
+// console.log('REMOVE 2:\n', list.remove(2));
+// console.log('REMOVE 2:\n', list.remove(2));
+// console.log('REMOVE 2:\n', list.remove(2));
+
+console.log(list.reverse());
