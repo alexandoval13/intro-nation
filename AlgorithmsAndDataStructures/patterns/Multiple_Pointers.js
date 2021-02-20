@@ -1,3 +1,13 @@
+const assertEquals = (actual, expected, testName) => {
+  if (actual === expected) {
+    console.log('PASSED');
+  } else {
+    console.log(
+      `FAILED ${testName} -- expected ${expected} but returned ${actual}`
+    );
+  }
+};
+
 // Implement solution using a multiple pointers pattern
 const sumZero = (integers) => {
   if (integers.length === 0) {
@@ -79,27 +89,43 @@ const countUniqueValues = (nums) => {
 };
 
 // countUniqueValues TESTS
-console.log(
-  'function returns 0 for an empty array:',
-  countUniqueValues([]) === 0
-);
-console.log(
-  'function returns number of unique values:',
-  countUniqueValues([1]) === 1
-);
-console.log(
-  'function returns number of unique values:',
-  countUniqueValues([1, 2, 3]) === 3
-);
-console.log(
-  'function returns number of unique values:',
-  countUniqueValues([1, 1, 2]) === 2
-);
-console.log(
-  'function returns number of unique values:',
-  countUniqueValues([1, 1, 2, 2, 2, 3, 4, 5]) === 5
-);
-console.log(
-  'function returns number of unique values:',
-  countUniqueValues([1, 1, 2, 3, 4, 5, 5, 5, 6, 6, 7]) === 7
-);
+// console.log(
+//   'function returns 0 for an empty array:',
+//   countUniqueValues([]) === 0
+// );
+// console.log(
+//   'function returns number of unique values:',
+//   countUniqueValues([1]) === 1
+// );
+// console.log(
+//   'function returns number of unique values:',
+//   countUniqueValues([1, 2, 3]) === 3
+// );
+// console.log(
+//   'function returns number of unique values:',
+//   countUniqueValues([1, 1, 2]) === 2
+// );
+// console.log(
+//   'function returns number of unique values:',
+//   countUniqueValues([1, 1, 2, 2, 2, 3, 4, 5]) === 5
+// );
+// console.log(
+//   'function returns number of unique values:',
+//   countUniqueValues([1, 1, 2, 3, 4, 5, 5, 5, 6, 6, 7]) === 7
+// );
+
+// pasted from example
+function areThereDuplicates(...args) {
+  // Two pointers
+  args.sort((a, b) => a > b);
+  let start = 0;
+  let next = 1;
+  while (next < args.length) {
+    if (args[start] === args[next]) {
+      return true;
+    }
+    start++;
+    next++;
+  }
+  return false;
+}

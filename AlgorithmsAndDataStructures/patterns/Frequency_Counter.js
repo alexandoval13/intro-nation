@@ -1,3 +1,13 @@
+const assertEquals = (actual, expected, testName) => {
+  if (actual === expected) {
+    console.log('PASSED');
+  } else {
+    console.log(
+      `FAILED ${testName} -- expected ${expected} but returned ${actual}`
+    );
+  }
+};
+
 // solve using the frequency counter pattern
 // const validAnagram = (string1, string2) => {
 //   if (string1.length !== string2.length) {
@@ -53,16 +63,6 @@ const validAnagram = (string1, string2) => {
 };
 
 // tests
-const assertEquals = (actual, expected, testName) => {
-  if (actual === expected) {
-    console.log('PASSED');
-  } else {
-    console.log(
-      `FAILED ${testName} -- expected ${expected} but returned ${actual}`
-    );
-  }
-};
-
 // assertEquals(
 //   validAnagram('', ''),
 //   true,
@@ -137,4 +137,48 @@ const sameFrequency = (int1, int2) => {
 //   sameFrequency(12345, 23456),
 //   false,
 //   'returns false for different integers'
+// );
+
+function areThereDuplicates() {
+  let inputs = [...arguments];
+  if (inputs.length === 0) {
+    return false;
+  }
+  let tracker = {};
+
+  for (var input of inputs) {
+    if (!tracker[input]) {
+      tracker[input] = true;
+    } else {
+      return true;
+    }
+  }
+  return false;
+}
+
+// assertEquals(areThereDuplicates(), false, 'returns false for no inputs');
+// assertEquals(
+//   areThereDuplicates('tijeras', 'lumberjack', 'santa claus'),
+//   false,
+//   'returns false for no duplicates'
+// );
+// assertEquals(
+//   areThereDuplicates('tijeras', 'lumberjack', 'santa claus', 'tijeras'),
+//   true,
+//   'returns true for string duplicates'
+// );
+// assertEquals(
+//   areThereDuplicates(1, 3, 4),
+//   false,
+//   'returns false for number arguments'
+// );
+// assertEquals(
+//   areThereDuplicates(1, 3, 4, 1),
+//   true,
+//   'returns true for number arguments'
+// );
+// assertEquals(
+//   areThereDuplicates(3, '3', 4, 1),
+//   false,
+//   'returns false for mixed string and number arguments'
 // );
