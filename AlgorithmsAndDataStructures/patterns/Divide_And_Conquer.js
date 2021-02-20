@@ -28,3 +28,4 @@ const binarySearch = (arr, val) => {
 console.log(binarySearch([1, 2, 3, 4, 5, 6], 4) === 3);
 console.log(binarySearch([1, 2, 3, 5, 6, 7], 4) === -1);
 console.log(binarySearch([1, 2, 3, 6, 7, 8], 8) === 5);
+console.log(binarySearch([1, 2, 3, 6, 7, 8], 11) === -1);
