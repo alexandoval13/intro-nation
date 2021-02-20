@@ -63,39 +63,78 @@ const assertEquals = (actual, expected, testName) => {
   }
 };
 
-assertEquals(
-  validAnagram('', ''),
-  true,
-  'returns true for empty string inputs'
-);
-assertEquals(
-  validAnagram('a', 'ab'),
-  false,
-  'returns false if strings are different lengths'
-);
+// assertEquals(
+//   validAnagram('', ''),
+//   true,
+//   'returns true for empty string inputs'
+// );
+// assertEquals(
+//   validAnagram('a', 'ab'),
+//   false,
+//   'returns false if strings are different lengths'
+// );
 
-assertEquals(
-  validAnagram('a', 'z'),
-  false,
-  'returns false if letters do not match'
-);
-assertEquals(
-  validAnagram('zz', 'zzz'),
-  false,
-  'returns false if letter counts do not match'
-);
-assertEquals(
-  validAnagram('azam', 'maza'),
-  true,
-  'returns true if letters and letter counts match'
-);
-assertEquals(
-  validAnagram('texttwisttime', 'timetwisttext'),
-  true,
-  'returns true if letters and letter counts match'
-);
-assertEquals(
-  validAnagram('awesome', 'awesom'),
-  false,
-  "returns false if counts don't match"
-);
+// assertEquals(
+//   validAnagram('a', 'z'),
+//   false,
+//   'returns false if letters do not match'
+// );
+// assertEquals(
+//   validAnagram('zz', 'zzz'),
+//   false,
+//   'returns false if letter counts do not match'
+// );
+// assertEquals(
+//   validAnagram('azam', 'maza'),
+//   true,
+//   'returns true if letters and letter counts match'
+// );
+// assertEquals(
+//   validAnagram('texttwisttime', 'timetwisttext'),
+//   true,
+//   'returns true if letters and letter counts match'
+// );
+// assertEquals(
+//   validAnagram('awesome', 'awesom'),
+//   false,
+//   "returns false if counts don't match"
+// );
+
+const sameFrequency = (int1, int2) => {
+  let string1 = int1.toString();
+  let string2 = int2.toString();
+  console.log(string1, string2);
+  if (string1.length !== string2.length) {
+    return false;
+  }
+  let tracker = {};
+  for (var num of string1) {
+    tracker[num] ? tracker[num]++ : (tracker[num] = 1);
+  }
+  for (var num of string2) {
+    if (!tracker[num]) {
+      return false;
+    }
+    tracker[num]--;
+  }
+  return true;
+};
+
+// Tests
+// assertEquals(sameFrequency(13, 13), true, 'returns true for the same number');
+// assertEquals(
+//   sameFrequency(13, 31),
+//   true,
+//   'returns true for the numbers 13 and 31'
+// );
+// assertEquals(
+//   sameFrequency(333, 3),
+//   false,
+//   'returns false for numbers with different integer frequencies'
+// );
+// assertEquals(sameFrequency(0, 0), true, 'returns true for 0 and 0');
+// assertEquals(
+//   sameFrequency(12345, 23456),
+//   false,
+//   'returns false for different integers'
+// );
