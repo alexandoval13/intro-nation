@@ -39,9 +39,6 @@ const minSubArrayLen = (array, minSum) => {
   let end = 0;
 
   // GET THE FIRST VALID WINDOW
-  // while validLength is null and sum < minSum
-  // increment end
-  // add sum
   while (validLength === null && end < array.length) {
     let currLength = end - start + 1;
     if (sum < minSum) {
@@ -54,24 +51,18 @@ const minSubArrayLen = (array, minSum) => {
   if (validLength === null) {
     return 0;
   }
-
   // move the window and shrink if possible
   while (validLength > 1 && start < array.length) {
-    // move the start array one over
-    // decrement from the sum
-    // start++;
+    // move the start one over and decrement from the sum
     sum = sum - array[start];
     start++;
     // adjust current length
     let currLength = end - start + 1;
-
-    // if sum is still greater than minSum
-    // change the value of min validLength
+    // if sum is greater than minSum, change the value of min validLength
     if (sum >= minSum && currLength < validLength) {
       validLength = currLength;
     } else {
-      // otherwise
-      // increment the end and add value
+      // otherwise increment the end and add value
       end++;
       sum += array[end];
     }
@@ -79,4 +70,57 @@ const minSubArrayLen = (array, minSum) => {
   return validLength;
 };
 
-console.log(minSubArrayLen([3, 75, 1, 25, 25, 25, 25], 100));
+// SOLUTION ON UDEMY
+// function minSubArrayLen(nums, sum) {
+//   let total = 0;
+//   let start = 0;
+//   let end = 0;
+//   let minLen = Infinity;
+
+//   while (start < nums.length) {
+//     // if current window doesn't add up to the given sum then
+// 		// move the window to right
+//     if(total < sum && end < nums.length){
+//       total += nums[end];
+// 			end++;
+//     }
+//     // if current window adds up to at least the sum given then
+// 		// we can shrink the window
+//     else if(total >= sum){
+//       minLen = Math.min(minLen, end-start);
+// 			total -= nums[start];
+// 			start++;
+//     }
+//     // current total less than required total but we reach the end, need this or else we'll be in an infinite loop
+//     else {
+//       break;
+//     }
+//   }
+
+//   return minLen === Infinity ? 0 : minLen;
+// }
+
+// console.log(minSubArrayLen([3, 75, 1, 25, 25, 25, 25], 100));
+
+// NEED TO COME BACK TO THIS ONE
+// SOLUTION ON UDEMY:
+function findLongestSubstring(str) {
+  let longest = 0;
+  let seen = {};
+  let start = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (seen[char]) {
+      start = Math.max(start, seen[char]);
+    }
+    // index - beginning of substring + 1 (to include current in count)
+    longest = Math.max(longest, i - start + 1);
+    // store the index of the next char so as to not double count
+    seen[char] = i + 1;
+  }
+  return longest;
+}
+
+// test
+console.log(findLongestSubstring('abcbde'));
