@@ -23,7 +23,8 @@ function sumRange(num) {
 
 function factorial(num) {
   // base case
-  if (num === 1) return 1;
+  if (num < 0) return 0;
+  if (num <= 1) return 1;
   return num * factorial(num - 1);
 }
 
@@ -82,6 +83,9 @@ function productOfArray(array) {
   if (array.length === 1) {
     return array[0];
   }
+  // OR instead of the previous 2 conditionals...
+  // if (array.length === 0) { return 1 }
+
   let product = 1;
   product *= array[0];
   return product * productOfArray(array.slice(1));
@@ -96,4 +100,17 @@ function recursiveRange(num) {
   return num + recursiveRange(num - 1);
 }
 
-console.log(recursiveRange(10));
+// console.log(recursiveRange(10));
+
+// 1, 1, 2, 3, 5, 8
+function fib(num) {
+  if (num === 0) {
+    return 0;
+  }
+  if (num <= 2) {
+    return 1;
+  }
+  return fib(num - 2) + fib(num - 1);
+}
+
+console.log(fib(10));
