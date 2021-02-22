@@ -181,4 +181,19 @@ function flatten(array) {
 // console.log(Array.isArray([]));
 // console.log('RESULT', flatten([[1], [2], [3]]));
 
-function capitalizeFirst(string) {}
+function capitalizeFirst(array) {
+  // Input: 1. [ string1, string2, string3, ...] // 2. [string2, string3, ...]
+  // when there are no elements returnan empty array literal
+  if (array.length === 0) {
+    return [];
+  }
+  // initialize a capitalized string array //
+  let result = [];
+  // capitalize first char of first element in array
+  // add it to the cs array
+  result.push(array[0][0].toUpperCase() + array[0].substring(1));
+  // return the cs array concatted with the result of calling this function on the rest of the array
+  return result.concat(capitalizeFirst(array.slice(1)));
+}
+
+console.log(capitalizeFirst(['alex', 'sandoval']));
