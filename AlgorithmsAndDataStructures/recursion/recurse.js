@@ -113,4 +113,72 @@ function fib(num) {
   return fib(num - 2) + fib(num - 1);
 }
 
-console.log(fib(10));
+// console.log(fib(10));
+
+////////////////////////////////////////////////////////
+///////////// HARDER RECURSION PROBLEMS ////////////////
+////////////////////////////////////////////////////////
+
+function reverse(string) {
+  if (string === '') {
+    return '';
+  }
+  let sub = string[string.length - 1];
+  return sub + reverse(string.substring(0, string.length - 1));
+}
+
+// console.log(reverse('abc'));
+
+// let string = 'abc';
+// console.log(string.substring(0, 0));
+
+function isPalindrome(string) {
+  console.log(string);
+  if (string.length <= 1) {
+    return true;
+  }
+  if (string[0] !== string[string.length - 1]) {
+    return false;
+  }
+  return isPalindrome(string.substring(1, string.length - 1));
+}
+
+// console.log(isPalindrome('aaaabbbbaaa'));
+
+function someRecursive(array, cb) {
+  if (array.length === 1) {
+    return cb(array[0]);
+  }
+  return cb(array[0]) || someRecursive(array.slice(1), cb);
+}
+
+// console.log(false || true);
+// console.log([1, 2, 3].slice(1));
+
+// console.log(
+//   someRecursive([1, 2], (num) => {
+//     return num === 3;
+//   })
+// );
+
+// RETURN TO THIS ONE TO FULLY UNDERSTAND IT
+function flatten(array) {
+  console.log(array.length, array);
+
+  let flat = [];
+
+  for (var i = 0; i < array.length; i++) {
+    if (!Array.isArray(array[i])) {
+      flat.push(array[i]);
+    } else {
+      flat = flat.concat(flatten(array[i]));
+    }
+  }
+
+  return flat;
+}
+
+// console.log(Array.isArray([]));
+// console.log('RESULT', flatten([[1], [2], [3]]));
+
+function capitalizeFirst(string) {}
