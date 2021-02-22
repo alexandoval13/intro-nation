@@ -196,4 +196,34 @@ function capitalizeFirst(array) {
   return result.concat(capitalizeFirst(array.slice(1)));
 }
 
-console.log(capitalizeFirst(['alex', 'sandoval']));
+// console.log(capitalizeFirst(['alex', 'sandoval']));
+
+function nestedEvenSum(obj) {
+  // not factored for nested arrays
+  // initialize sum
+  let sum = 0;
+  // move through object
+  for (var key in obj) {
+    if (typeof obj[key] === 'number' && obj[key] % 2 === 0) {
+      sum += obj[key];
+    } else if (typeof obj[key] === 'object') {
+      sum += nestedEvenSum(obj[key]);
+    }
+  }
+  return sum;
+}
+
+let object = {
+  num1: 1,
+  obj: {
+    num2: 2,
+    num3: 3,
+  },
+  string: 'str',
+  mix: {
+    num4: 4,
+    bool: false,
+  },
+};
+
+console.log(nestedEvenSum(object));
