@@ -226,4 +226,146 @@ let object = {
   },
 };
 
-console.log(nestedEvenSum(object));
+// console.log(nestedEvenSum(object));
+
+function capitalizeWords(array) {
+  if (array.length === 0) {
+    return [];
+  }
+  let result = [array[0].toUpperCase()];
+  return result.concat(capitalizeWords(array.slice(1)));
+}
+
+// console.log(capitalizeWords(['help', 'me']));
+
+function stringifyNumbers(obj) {
+  // NOTE: not factored for arrays and their elements
+  let newObj = {};
+  // move through object
+  for (var key in obj) {
+    if (typeof obj[key] === 'number') {
+      newObj[key] = obj[key].toString();
+    } else if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+      newObj[key] = stringifyNumbers(obj[key]);
+    } else {
+      newObj[key] = obj[key];
+    }
+  }
+  return newObj;
+}
+
+let obj = {
+  num1: 1,
+  obj: {
+    num2: 2,
+    num3: 3,
+  },
+  string: 'str',
+  mix: {
+    num4: 4,
+    bool: false,
+  },
+};
+
+// console.log(stringifyNumbers(obj));
+
+function collectStrings(obj) {
+  let strings = [];
+  // move through an object
+  for (var key in obj) {
+    if (typeof obj[key] === 'string') {
+      strings.push(obj[key]);
+    } else if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+      strings = strings.concat(collectStrings(obj[key]));
+    }
+  }
+  // return a  result array containing all of the strings in the input object
+  return strings;
+}
+
+// NOTE TO SELF : Concatting does not modify the original array SO need to set original array equal to itself concatted with whatever else (i.e. array = array.concat(otherArray))
+
+let objStr = {
+  stuff: 'foo',
+  data: {
+    val: {
+      thing: {
+        info: 'bar',
+        moreInfo: {
+          evenMoreInfo: {
+            weMadeIt: 'baz',
+          },
+        },
+      },
+    },
+  },
+};
+
+console.log(
+  (() => {
+    let obj = {};
+    let res = [];
+    for (var key in obj) {
+      res.push(key);
+    }
+    return res;
+  })()
+);
+
+// console.log(collectStrings(objStr));
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+// SOME PASTED SOLUTIONS -- if very different from mine
+
+function capitalizeFirst(array) {
+  if (array.length === 1) {
+    return [array[0][0].toUpperCase() + array[0].substr(1)];
+  }
+  const res = capitalizeFirst(array.slice(0, -1));
+  const string =
+    array.slice(array.length - 1)[0][0].toUpperCase() +
+    array.slice(array.length - 1)[0].substr(1);
+  res.push(string);
+  return res;
+}
+
+// console.log(capitalizeFirst(['asdf', 'ioiyo']));
+
+function capitalizeWords(array) {
+  if (array.length === 1) {
+    return [array[0].toUpperCase()];
+  }
+  let res = capitalizeWords(array.slice(0, -1));
+  res.push(array.slice(array.length - 1)[0].toUpperCase());
+  return res;
+}
+
+function nestedEvenSum(obj, sum = 0) {
+  for (var key in obj) {
+    if (typeof obj[key] === 'object') {
+      sum += nestedEvenSum(obj[key]);
+    } else if (typeof obj[key] === 'number' && obj[key] % 2 === 0) {
+      sum += obj[key];
+    }
+  }
+  return sum;
+}
+
+function collectStrings(obj) {
+  var stringsArr = [];
+
+  function gatherStrings(o) {
+    for (var key in o) {
+      if (typeof o[key] === 'string') {
+        stringsArr.push(o[key]);
+      } else if (typeof o[key] === 'object') {
+        return gatherStrings(o[key]);
+      }
+    }
+  }
+
+  gatherStrings(obj);
+
+  return stringsArr;
+}
