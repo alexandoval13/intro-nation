@@ -33,4 +33,27 @@ const selectionSort = (array) => {
   return array;
 };
 
-console.log([4, 3, 1, 2]);
+// console.log(selectionSort([4, 3, 1, 2]));
+
+// Attempt 2/24
+function otherSelection(array) {
+  let start = 0; // first value index
+
+  while (start < array.length) {
+    let min = start;
+    let swapped = false;
+    for (var i = start; i < array.length; i++) {
+      if (array[i] < array[min]) {
+        min = i;
+        swapped = true;
+      }
+    }
+    if (swapped) {
+      swap(array, start, min);
+    }
+    start++;
+  }
+  return array;
+}
+
+console.log(otherSelection([4, 3, 1, -5, 2, 0]));
