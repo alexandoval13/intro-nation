@@ -1,5 +1,8 @@
 /**
  * Places smallest values into sorted position
+ *
+ * Big 0: O(n^2)
+ * as the length of the array, the num of comparisons grows as well
  */
 const swap = (arr, in1, in2) => {
   let temp = arr[in1];
