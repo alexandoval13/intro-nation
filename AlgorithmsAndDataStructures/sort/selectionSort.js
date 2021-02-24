@@ -3,6 +3,8 @@
  *
  * Big 0: O(n^2)
  * as the length of the array, the num of comparisons grows as well
+ *
+ * Better than something like bubbleSort when for some reason you're worried about making less swaps (since it only swaps once after each iteration through)
  */
 const swap = (arr, in1, in2) => {
   let temp = arr[in1];
