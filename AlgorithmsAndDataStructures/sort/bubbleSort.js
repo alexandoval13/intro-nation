@@ -48,6 +48,8 @@ function otherBubble(array) {
   while (swapped) {
     let temp = false;
     for (var i = 0; i < max; i++) {
+      console.log(array);
+      console.log(array[i], array[i + 1]);
       if (array[i] > array[i + 1]) {
         temp = true;
         swap(array, i, i + 1);
@@ -61,4 +63,4 @@ function otherBubble(array) {
   return array;
 }
 
-console.log(otherBubble([3, 2, 4, 1]));
+console.log(otherBubble([1, 2, 3, 4]));
