@@ -6,6 +6,8 @@
   How it works:
   - Works by selecting one element called the pivot, then finding the index where the pivot should end up in the sorted array
   - Once the pivot is positioned, quick sort can be applied to either side
+
+  Big O: O(n log n)
 */
 
 // =======================================================
