@@ -1,3 +1,9 @@
+/**
+ * RESOURCES:
+ *  https://javascript.info/async-await
+ *  https://javascript.info/fetch
+ */
+
 const fetch = require('node-fetch');
 const Promise = require('bluebird');
 const key = require('../data.js').API;
@@ -87,3 +93,18 @@ async function f() {
 async function f() {
   throw new Error('wjfafkn');
 }
+
+// SKIPPED A BUNCH OF STUFF BUT NOW TO SUMMARIZE
+
+/**
+ * The async keyword before a function...
+ * 1. Makes it always return a promise
+ * 2. Allows "await" to be used in it
+ *
+ * The await keyword before a promise makes JS wait until that promise settles, then
+ * 1. If error, the exception is generated (same as if throw error were called there)
+ * 2. Otherwise it returns the result
+ *
+ *
+ * With async/await we rarely need to write promise.then/catch, but don't forget that they ARE based on promises
+ */
