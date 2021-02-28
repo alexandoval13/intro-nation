@@ -8,6 +8,7 @@
   - Once the pivot is positioned, quick sort can be applied to either side
 
   Big O: O(n log n)
+  Note that if you happened to pick the minimum value every single time (as the pivot point), the time complexity goes up to O(n^2)
 */
 
 // =======================================================
