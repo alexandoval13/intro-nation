@@ -2,6 +2,12 @@
  * RESOURCES:
  *  https://javascript.info/async-await
  *  https://javascript.info/fetch
+ *
+ *  https://eloquentjavascript.net/11_async.html
+ *
+ * NEEDS REVIEW:
+ *  https://css-tricks.com/using-es2017-async-functions/
+ *  https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1
  */
 
 const fetch = require('node-fetch');
