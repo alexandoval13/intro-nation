@@ -18,7 +18,7 @@ const alex = new User(
 
 const drew = new User('morningBerry', 'straw', 'gogi@yahoo.com', 'Drew Barre');
 
-console.log(alex, '\n', drew); // -->
+// console.log(alex, '\n', drew); // -->
 // User {
 //   username: 'asandyball',
 //   password: 'peeyou',
@@ -65,7 +65,7 @@ const marshall = new ClassyUser(
   'Marshall Matters'
 );
 
-console.log(dame, '\n', marshall); // -->
+// console.log(dame, '\n', marshall); // -->
 // ClassyUser {
 //   username: 'greatDame',
 //   password: 'pearl',
@@ -92,4 +92,32 @@ class ClassyUserWithMethods {
     this.email = email;
     this.name = name;
   }
+  updatePassword(newPW) {
+    this.password = newPW;
+  }
 }
+
+const adono = new ClassyUserWithMethods(
+  'yes_andNo',
+  'pw',
+  'email@email.com',
+  'Adono Mann'
+);
+
+console.log(adono); // -->:
+// ClassyUserWithMethods {
+//   username: 'yes_andNo',
+//   password: 'pw',
+//   email: 'email@email.com',
+//   name: 'Adono Mann'
+// }
+
+adono.updatePassword('newpw');
+
+console.log(adono); // -->:
+// ClassyUserWithMethods {
+//   username: 'yes_andNo',
+//   password: 'newpw',
+//   email: 'email@email.com',
+//   name: 'Adono Mann'
+// }
