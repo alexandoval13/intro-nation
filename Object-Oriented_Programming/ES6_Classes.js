@@ -1,3 +1,9 @@
+/**
+ * Resources:
+ * https://medium.com/@luke_smaki/javascript-es6-classes-8a34b0a6720a
+ *
+ */
+
 // WARNING:
 // The immediate following example is that of Object-Oriented Programming BEFORE ES6
 // For ES6, see further below at "OOP in ES6"
@@ -121,3 +127,120 @@ console.log(adono); // -->:
 //   email: 'email@email.com',
 //   name: 'Adono Mann'
 // }
+
+/**
+ * Classes can also contain static methods
+ *
+ * What is a static method?
+ *  It is a function that is bound to the class, not an object...
+ * This means that the static method CANNOT be called from an instance of the class
+ *
+ * The following is an example:
+ */
+
+class UserWithStaticMethod {
+  constructor(username, password, email, name) {
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.name = name;
+  }
+  updatePassword(newPW) {
+    this.password = newPW;
+  }
+  static staticMethod() {
+    console.log('I am a static method');
+  }
+}
+
+const lonely = new UserWithStaticMethod(
+  'lonely_guy',
+  'saveme',
+  'chillin@hotmail.com',
+  'Tom A. Hawk'
+);
+
+lonely.updatePassword('lovewins'); // -->
+// ClassyUserWithMethods {
+//   username: 'yes_andNo',
+//   password: 'pw',
+//   email: 'email@email.com',
+//   name: 'Adono Mann'
+// }
+
+// lonely.staticMethod(); // --> ERROR
+
+// UserWithStaticMethod.staticMethod(); // --> I am a static method
+
+/**
+ * Now for getters and setters
+ *
+ * One of the core concepts of OOP is encapsulation.
+ * Encapsulation is the idea that data (object properties) should not be accessed or modified from outside the object.
+ *
+ * So, we would use...
+ * - getter, to access
+ * - setter, to modify
+ * They are specific methods we define in our class
+ */
+
+class UserSetAndGet {
+  constructor(name, age, email) {
+    this._name = name;
+    this._age = age;
+    this._email = email;
+  }
+  get name() {
+    return this._name;
+  }
+  set name(newName) {
+    this._name = newName;
+  }
+}
+
+const jeff = new UserSetAndGet('Jeff', 30, 'jeff@jiffy.com');
+console.log(jeff);
+console.log(jeff.name);
+jeff.name = 'Jim';
+console.log(jeff.name);
+console.log(jeff);
+
+/**
+ * Inheritance:
+ *
+ * Classes can inherit from other classes (parent-child).
+ *
+ */
+
+class ParentUser {
+  constructor(name, age) {
+    this._name = name;
+    this._age = age;
+  }
+  get name() {
+    return this._name;
+  }
+  set name(newName) {
+    this._name = newName;
+  }
+}
+
+class ChildUser extends ParentUser {
+  constructor(name, age, sport) {
+    super(name, age);
+    this._sport = sport;
+  }
+  get sport() {
+    return this._sport;
+  }
+  set sport(newSport) {
+    this._sport = newSport;
+  }
+}
+
+const kiddo = new ChildUser('Sarra', 10, 'soccer');
+console.log(kiddo);
+console.log(kiddo.name);
+console.log(kiddo.sport);
+
+// The important things to note about inheriting
